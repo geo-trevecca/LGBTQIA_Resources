@@ -9,7 +9,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Caveat&family=Inter:wght@400;600;700&display=swap');
         body {
             font-family: 'Inter', sans-serif;
-            background-color: rgb(165, 193, 220); /* Light blue background */
+            background-color: rgb(165, 193, 220) /* Light blue background */
         }
         .header-font {
             font-family: 'Caveat', cursive;
@@ -18,10 +18,34 @@
             background-color: white;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            position: relative;
+            cursor: pointer;
+            height: 250px; /* Fixed height for consistent flipping */
         }
-        .card:hover {
-            transform: translateY(-5px);
+        .card.flipped {
+            transform: rotateY(180deg);
+        }
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+        .card-front {
+            padding: 1.5rem;
+        }
+        .card-back {
+            transform: rotateY(180deg);
         }
         .link {
             color: #2563eb;
@@ -30,41 +54,72 @@
         .link:hover {
             text-decoration: underline;
         }
+        .custom-logo-color {
+            filter: invert(93%) sepia(17%) saturate(147%) hue-rotate(63deg) brightness(97%) contrast(89%);
+        }
     </style>
 </head>
 <body class="p-4 sm:p-8">
     <div class="max-w-4xl mx-auto space-y-8">
         <header class="text-center">
-            <h1 class="text-4xl sm:text-5xl font-extrabold header-font tracking-wide">
-                <span style="color: rgb(216, 72, 69);">L</span><!--
-                --><span style="color: rgb(207, 109, 54);">G</span><!--
-                --><span style="color: rgb(157, 140, 75);">B</span><!--
-                --><span style="color: rgb(80, 155, 121);">T</span><!--
-                --><span style="color: rgb(80, 87, 155);">Q</span><!--
-                --><span style="color: rgb(114, 80, 155);">I</span><!--
-                --><span style="color: rgb(216, 72, 69);">A</span><!--
-                --><span style="color: rgb(207, 109, 54);">+</span>
-            </h1>
-            <p class="text-3xl header-font text-black mt-0">Resources</p>
+            <img src="header.png" alt="LGBTQIA+ Resources" class="w-full h-auto max-h-64 mx-auto mb-4">
         </header>
+
+        <section id="professional-guidelines" class="space-y-4">
+            <h2 class="text-2xl font-semibold text-gray-800 border-b-2 border-indigo-500 pb-2">Professional Guidelines & Best Practices</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="card">
+                    <div class="card-face card-front p-6 flex flex-col justify-center items-center">
+                        <img src ="https://www.counseling.org/ResourcePackages/ACA/assets/dist/images/aca-logo.svg" class="w-full h-full object-contain">
+                    </div>
+                    <div class="card-face card-back p-6 flex flex-col justify-center items-center space-y-4">
+                        <p class="text-gray-600">A framework for creating safe, supportive, and caring relationships with LGBQIQA individuals and communities.</p>
+                        <a href="https://www.counseling.org/docs/default-source/competencies/algbtic-competencies-for-counseling-lgbqiqa.pdf" class="link">Learn more &rarr;</a>
+                        <p class="text-gray-600">A framework for creating safe, supportive, and caring relationships with Transgender individuals and communities.</p>
+                        <a href="https://www.counseling.org/docs/default-source/competencies/algbtic-competencies.pdf?sfvrsn=d4a480bc_4" class="link">Learn more &rarr;</a>
+                    </div>
+                </div>
+                 <div class="card">
+                    <div class="card-face card-front p-6 flex flex-col justify-center items-center">
+                        <img src = "https://www.aamft.org/Images/AAMFT-LGBTQIA_Guidelines-Twitter.jpg?version=8CB3B5E0">
+                    </div>
+                    <div class="card-face card-back p-6 flex flex-col justify-center items-center space-y-4">
+                        <p class="text-gray-600">Guidelines for Marriage and Family Therapists on how to practice in an affirming, inclusive, ethical, and competent way with LGBTQIA+ individuals and families.</p>
+                        <a href="https://www.aamft.org/AAMFT/Online_Education/LGBTQIA-Affirming_Marriage_and_Family_Therapy.aspx" class="link">Learn more &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <section id="national-organizations" class="space-y-4">
             <h2 class="text-2xl font-semibold text-gray-800 border-b-2 border-indigo-500 pb-2">National Organizations</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="card p-6">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">GLMA: Health Professionals Advancing LGBTQ+ Equality</h3>
-                    <p class="text-gray-600 mb-4">A professional organization that provides advocacy, education, and a referral network for LGBTQIA+-affirming providers.</p>
-                    <a href="https://www.glma.org/" class="link">Learn more &rarr;</a>
+                <div class="card">
+                    <div class="card-face card-front p-6 flex flex-col justify-center items-center">
+                        <img src ="https://imgs.search.brave.com/oLW_FFJLg_mziFcKmwmgKQsOgqqcP5Z4H7wUNPLRyD8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9nbG1h/Lm9yZy9waG90b3Mv/R0xNQS1GdWxsLUxv/Z28tQ29sb3ItS18w/MzMxMjAyMzE1MDgx/MC5QTkc">
+                    </div>
+                    <div class="card-face card-back p-6 flex flex-col justify-center items-center space-y-4">
+                        <p class="text-gray-600">A professional organization that provides advocacy, education, and a referral network for LGBTQIA+-affirming providers.</p>
+                        <a href="https://www.glma.org/" class="link">Learn more &rarr;</a>
+                    </div>
                 </div>
-                <div class="card p-6">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">The Trevor Project</h3>
-                    <p class="text-gray-600 mb-4">The leading suicide prevention and crisis intervention organization for LGBTQIA+ youth, offering resources and trainings for clinicians.</p>
-                    <a href="https://www.thetrevorproject.org/" class="link">Learn more &rarr;</a>
+                <div class="card">
+                    <div class="card-face card-front p-6 flex flex-col justify-center items-center">
+                        <img src="https://imgs.search.brave.com/hN9nZbp3MGYvjsS1Vp3sdXpl4W_GzPBlpR5KzPkVTPY/rs:fit:500:0:1:0/g:ce/aHR0cDovL3JvY2hl/c3Rlci5jb25jZXJu/Y2VudGVyLmNvbS8v/YXNzZXRzL3VwbG9h/ZHMvcmVzb3VyY2Vf/cGhvdG9zLzE3MjI5/NjUxNjVfYjljODMx/MTQwNjYwNWUwYTJl/Zjcud2VicA">
+                    </div>
+                    <div class="card-face card-back p-6 flex flex-col justify-center items-center space-y-4">
+                        <p class="text-gray-600">The leading suicide prevention and crisis intervention organization for LGBTQIA+ youth, offering resources and trainings for clinicians.</p>
+                        <a href="https://www.thetrevorproject.org/" class="link">Learn more &rarr;</a>
+                    </div>
                 </div>
-                 <div class="card p-6">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">World Professional Association for Transgender Health (WPATH)</h3>
-                    <p class="text-gray-600 mb-4">An international organization that publishes the Standards of Care, a key clinical guideline for gender-affirming care.</p>
-                    <a href="https://www.wpath.org/" class="link">Learn more &rarr;</a>
+                 <div class="card">
+                    <div class="card-face card-front p-6 flex flex-col justify-center items-center">
+                        <img src = "https://imgs.search.brave.com/wRO1j1ugEpnFAMgKTKTSGgsn_EAUjuuFqteodLBiX4k/rs:fit:0:180:1:0/g:ce/aHR0cHM6Ly9hcHAu/d3BhdGgub3JnL21l/ZGlhL2Ntcy9Eb2N1/bWVudHMvTG9nb3Mv/d3BhdGhfbG9nb193/b3Jkcy5wbmc">
+                    </div>
+                    <div class="card-face card-back p-6 flex flex-col justify-center items-center space-y-4">
+                        <p class="text-gray-600">An international organization that publishes the Standards of Care, a key clinical guideline for gender-affirming care.</p>
+                        <a href="https://www.wpath.org/" class="link">Learn more &rarr;</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -72,76 +127,117 @@
         <section id="local-organizations" class="space-y-4">
             <h2 class="text-2xl font-semibold text-gray-800 border-b-2 border-indigo-500 pb-2">Local Nashville Organizations</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <div class="card p-6">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">The Works Counseling Center</h3>
-                    <p class="text-gray-600 mb-4">Specializes in working with queer, bisexual, pansexual, and transgender individuals, providing a safe and affirming space.</p>
-                    <a href="https://workscounselingcenter.com/lgbt/" class="link">Learn more &rarr;</a>
+                <div class="card">
+                    <div class="card-face card-front p-6 flex flex-col justify-center items-center">
+                        <img src="https://workscounselingcenter.com/wp-content/uploads/2021/03/Logo-1.png">
+                    </div>
+                    <div class="card-face card-back p-6 flex flex-col justify-center items-center space-y-4">
+                        <p class="text-gray-600">Specializes in working with queer, bisexual, pansexual, and transgender individuals, providing a safe and affirming space.</p>
+                        <a href="https://workscounselingcenter.com/lgbt/" class="link">Learn more &rarr;</a>
+                    </div>
                 </div>
-                <div class="card p-6">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Tennessee Behavioral Health</h3>
-                    <p class="text-gray-600 mb-4">Provides LGBTQIA+-affirming mental healthcare with staff trained in cultural competence and a judgment-free environment.</p>
-                    <a href="https://tennesseebehavioralhealth.com/mental-health/lgbtq-therapy-nashville/" class="link">Learn more &rarr;</a>
+                 <div class="card">
+                    <div class="card-face card-front p-6 flex flex-col justify-center items-center">
+                        <img src = "https://images.squarespace-cdn.com/content/v1/6070a248f674ab024af34b84/1617994426876-JXOGBRWYK8NBHENG2U2N/HU_Logo_FINAL_RGB_Horizontal.png?format=1500w">
+                    </div>
+                    <div class="card-face card-back p-6 flex flex-col justify-center items-center space-y-4">
+                        <p class="text-gray-600">A Nashville-based team of queer therapists offering LGBTQ-affirming, sex-positive, and trauma-informed therapy services.</p>
+                        <a href="https://www.healingumbrellapsychotherapy.com/" class="link">Learn more &rarr;</a>
+                    </div>
                 </div>
-                 <div class="card p-6">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Healing Umbrella Psychotherapy</h3>
-                    <p class="text-gray-600 mb-4">A Nashville-based team of queer therapists offering LGBTQ-affirming, sex-positive, and trauma-informed therapy services.</p>
-                    <a href="https://www.healingumbrellapsychotherapy.com/" class="link">Learn more &rarr;</a>
+                 <div class="card">
+                    <div class="card-face card-front p-6 flex flex-col justify-center items-center">
+                        <img src = "https://justusoasis.org/wp-content/uploads/2021/10/just-us_logo.png">
+                    </div>
+                    <div class="card-face card-back p-6 flex flex-col justify-center items-center space-y-4">
+                        <p class="text-gray-600">This organization provides positive youth development programs and mental health services specifically for LGBTQIA+ youth in Tennessee.</p>
+                        <a href="https://justusoasis.org/" class="link">Learn more &rarr;</a>
+                    </div>
                 </div>
-                 <div class="card p-6">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Just Us at Oasis Center</h3>
-                    <p class="text-gray-600 mb-4">This organization provides positive youth development programs and mental health services specifically for LGBTQIA+ youth in Tennessee.</p>
-                    <a href="https://justusoasis.org/" class="link">Learn more &rarr;</a>
+                <div class="card">
+                    <div class="card-face card-front p-6 flex flex-col justify-center items-center">
+                        <img src = "http://pflagnashville.org/wp-content/uploads/PFLAGNashville_Logo260px.png">
+                    </div>
+                    <div class="card-face card-back p-6 flex flex-col justify-center items-center space-y-4">
+                        <p class="text-gray-600">Provides free support for parents, family, and friends of LGBTQIA+ people, with monthly support meetings.</p>
+                        <a href="http://pflagnashville.org/" class="link">Learn more &rarr;</a>
+                    </div>
                 </div>
-                <div class="card p-6">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">PFLAG Nashville</h3>
-                    <p class="text-gray-600 mb-4">Provides free support for parents, family, and friends of LGBTQIA+ people, with monthly support meetings.</p>
-                    <a href="http://pflagnashville.org/" class="link">Learn more &rarr;</a>
-                </div>
-                <div class="card p-6">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Music City PrEP Clinic</h3>
-                    <p class="text-gray-600 mb-4">Offers comprehensive sexual health services and gender-affirming healthcare in a safe and confidential environment.</p>
-                    <a href="https://www.musiccityprep.org/" class="link">Learn more &rarr;</a>
+                <div class="card">
+                    <div class="card-face card-front p-6 flex flex-col justify-center items-center">
+                        <img src = "https://www.musiccityprep.org/wp-content/uploads/2022/03/music-city-prep-clinic-logo-x1-032422.png" class="w-full h-auto custom-logo-color">
+                    </div>
+                    <div class="card-face card-back p-6 flex flex-col justify-center items-center space-y-4">
+                        <p class="text-gray-600">Offers comprehensive sexual health services and gender-affirming healthcare in a safe and confidential environment.</p>
+                        <a href="https://www.musiccityprep.org/" class="link">Learn more &rarr;</a>
+                    </div>
                 </div>
             </div>
         </section>
         
-        <section id="professional-podcasts" class="space-y-4">
-            <h2 class="text-2xl font-semibold text-gray-800 border-b-2 border-indigo-500 pb-2">Professional Podcasts</h2>
+        <section id="professional-trainings" class="space-y-4">
+            <h2 class="text-2xl font-semibold text-gray-800 border-b-2 border-indigo-500 pb-2">Professional Trainings & Toolkits</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="card p-6">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Psychiatry Unbound</h3>
-                    <p class="text-gray-600 mb-4">Features an episode on "Transgender and LGBTQ Mental Health" with discussion on best practices and therapeutic approaches.</p>
-                    <a href="https://psychiatryonline.org/content/psychiatry-unbound/transgender-and-lgbtq-mental-health" class="link">Learn more &rarr;</a>
+                <div class="card">
+                    <div class="card-face card-front p-6 flex flex-col justify-center items-center">
+                        <img src="https://affirmativecouch.com/wp-content/themes/affirmativecouch2018/images/affirmative-couch-logo.svg">
+                    </div>
+                    <div class="card-face card-back p-6 flex flex-col justify-center items-center space-y-4">
+                        <p class="text-gray-600">Offers continuing education and training for therapists on affirmative psychotherapy for LGBTQIA+, consensually non-monogamous, and kink communities.</p>
+                        <a href="https://affirmativecouch.com/" class="link">Learn more &rarr;</a>
+                    </div>
                 </div>
-                <div class="card p-6">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Improving LGBTQ Health with Brian Mustanski, PhD</h3>
-                    <p class="text-gray-600 mb-4">This podcast episode from Northwestern University discusses the history of LGBTQ health research and current initiatives to close knowledge gaps.</p>
-                    <a href="https://www.feinberg.northwestern.edu/research/podcast/improving-lgbtq-health-with-brian-mustanski-phd.html" class="link">Learn more &rarr;</a>
+                <div class="card">
+                    <div class="card-face card-front p-6 flex flex-col justify-center items-center">
+                        <img src = "https://www.psychiatry.org/assets/images/logos/c-logo.svg" class="w-full h-full object-contain">
+                    </div>
+                    <div class="card-face card-back p-6 flex flex-col justify-center items-center space-y-4">
+                        <p class="text-gray-600">A toolkit from the American Psychiatric Association offering guidance on gender-affirming therapy and best practices for working with transgender and gender nonconforming clients.</p>
+                        <a href="https://www.psychiatry.org/psychiatrists/diversity/education/transgender-and-gender-nonconforming-patients/gender-affirming-therapy" class="link">Learn more &rarr;</a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="professional-trainings" class="space-y-4">
-            <h2 class="text-2xl font-semibold text-gray-800 border-b-2 border-indigo-500 pb-2">Professional Trainings & Toolkits</h2>
+        <section id="professional-podcasts" class="space-y-4">
+            <h2 class="text-2xl font-semibold text-gray-800 border-b-2 border-indigo-500 pb-2">Podcasts</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="card p-6">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">The Affirmative Couch</h3>
-                    <p class="text-gray-600 mb-4">Offers continuing education and training for therapists on affirmative psychotherapy for LGBTQIA+, consensually non-monogamous, and kink communities.</p>
-                    <a href="https://affirmativecouch.com/" class="link">Learn more &rarr;</a>
+                <div class="card">
+                    <div class="card-face card-front p-6 flex flex-col justify-center items-center">
+                        <img src = "https://psychiatryonline.org/specs/products/app/releasedAssets/images/podcast-page-e5646e8da1c8e6023cb3efa874c29c2b.png">
+                    </div>
+                    <div class="card-face card-back p-6 flex flex-col justify-center items-center space-y-4">
+                        <p class="text-gray-600">Features an episode on "Transgender and LGBTQ Mental Health" with discussion on best practices and therapeutic approaches.</p>
+                        <a href="https://psychiatryonline.org/content/psychiatry-unbound/transgender-and-lgbtq-mental-health" class="link">Learn more &rarr;</a>
+                    </div>
                 </div>
-                <div class="card p-6">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">APA Gender-Affirming Therapy Guide</h3>
-                    <p class="text-gray-600 mb-4">A toolkit from the American Psychiatric Association offering guidance on gender-affirming therapy and best practices for working with transgender and gender nonconforming clients.</p>
-                    <a href="https://www.psychiatry.org/psychiatrists/diversity/education/transgender-and-gender-nonconforming-patients/gender-affirming-therapy" class="link">Learn more &rarr;</a>
+                <div class="card">
+                    <div class="card-face card-front p-6 flex flex-col justify-center items-center">
+                        <img src = "https://imgs.search.brave.com/p4bRSQJ1trXzbopyDPSqfLG3TgKIsfqBH2f9l4JCtUo/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9sb2dv/d2lrLmNvbS9jb250/ZW50L3VwbG9hZHMv/aW1hZ2VzL25tLW5v/cnRod2VzdGVybi1t/ZWRpY2luZS1mZWlu/YmVyZy1zY2hvb2wt/b2YtbWVkaWNpbmU2/NjU1LmxvZ293aWsu/Y29tLndlYnA" class="w-full h-full object-cover">
+                    </div>
+                    <div class="card-face card-back p-6 flex flex-col justify-center items-center space-y-4">
+                        <p class="text-gray-600">This podcast episode from Northwestern University discusses the history of LGBTQ health research and current initiatives to close knowledge gaps.</p>
+                        <a href="https://www.feinberg.northwestern.edu/research/podcast/improving-lgbtq-health-with-brian-mustanski-phd.html" class="link">Learn more &rarr;</a>
+                    </div>
                 </div>
             </div>
         </section>
+
     </div>
 
     <footer class="mt-12 text-center text-gray-500 text-sm">
         <p>Group Presentation By:</p>
-        <p>Chapple White, Christian Walker, Corey Wayne, Jim Clifton, Rebecca Harris, George Scharein</p>
-        <p>CSL-5250-01 Counseling Diverse Populations</p>
+        <p>Jim Clifton, Rebecca Harris, George Scharein, Christian Walker, Corey Wayne, Chapple White</p>
     </footer>
+
+    <script>
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.toggle('flipped');
+            });
+        });
+    </script>
+
 </body>
 </html>
